@@ -9,6 +9,7 @@
     <VersionPrefix>6.0.0</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
     <DefineConstants Condition="'$(TargetFramework)'=='netcoreapp1.1' OR '$(DotNetCoreOnly)'=='1'">$(DefineConstants);DOTNETCORE</DefineConstants>
+    <StartupObject>Tests.BenchmarkProgram</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.0-beta1-build3642" />
@@ -18,7 +19,8 @@
     <PackageReference Include="Bogus" Version="11.0.5" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
     <PackageReference Include="FluentAssertions" Version="4.19.2" />
-    <PackageReference Include="xunit" Version="2.3.0-beta1-build3642" />    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0-preview-20170810-02" />
+    <PackageReference Include="xunit" Version="2.3.0-beta1-build3642" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0-preview-20170810-02" />
     <PackageReference Include="SemanticVersioning" Version="0.7.6" />
     <PackageReference Include="DiffPlex" Version="1.4.1" />
     <PackageReference Include="System.Reactive" Version="3.1.1" />
