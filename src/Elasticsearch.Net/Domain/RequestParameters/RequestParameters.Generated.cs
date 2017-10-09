@@ -6951,36 +6951,6 @@ namespace Elasticsearch.Net
 		
 	}
 	
-	///<summary>Request parameters descriptor for XpackMlDeleteFilter
-	///<pre>
-	///
-	///</pre>
-	///</summary>
-	public class DeleteFilterRequestParameters : FluentRequestParameters<DeleteFilterRequestParameters> 
-	{
-		public override HttpMethod DefaultHttpMethod => HttpMethod.DELETE;
-		
-		///<summary>Pretty format the returned JSON response.</summary>
-		public DeleteFilterRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
-		
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public DeleteFilterRequestParameters Human(bool human) => this.AddQueryString("human", human);
-		
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public DeleteFilterRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
-		
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public DeleteFilterRequestParameters Source(string source) => this.AddQueryString("source", source);
-		
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public DeleteFilterRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
-		
-	}
-	
 	///<summary>Request parameters descriptor for XpackMlDeleteJob
 	///<pre>
 	///http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html
@@ -7208,44 +7178,6 @@ namespace Elasticsearch.Net
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
 		public GetDatafeedStatsRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
-		
-	}
-	
-	///<summary>Request parameters descriptor for XpackMlGetFilters
-	///<pre>
-	///
-	///</pre>
-	///</summary>
-	public class GetFiltersRequestParameters : FluentRequestParameters<GetFiltersRequestParameters> 
-	{
-		public override HttpMethod DefaultHttpMethod => HttpMethod.GET;
-		
-		///<summary>skips a number of filters</summary>
-		public GetFiltersRequestParameters From(int from) => this.AddQueryString("from", from);
-		
-		
-		///<summary>specifies a max number of filters to get</summary>
-		public GetFiltersRequestParameters Size(int size) => this.AddQueryString("size", size);
-		
-		
-		///<summary>Pretty format the returned JSON response.</summary>
-		public GetFiltersRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
-		
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public GetFiltersRequestParameters Human(bool human) => this.AddQueryString("human", human);
-		
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public GetFiltersRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
-		
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public GetFiltersRequestParameters Source(string source) => this.AddQueryString("source", source);
-		
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public GetFiltersRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	
@@ -7524,36 +7456,6 @@ namespace Elasticsearch.Net
 		
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
 		public PutDatafeedRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
-		
-	}
-	
-	///<summary>Request parameters descriptor for XpackMlPutFilter
-	///<pre>
-	///
-	///</pre>
-	///</summary>
-	public class PutFilterRequestParameters : FluentRequestParameters<PutFilterRequestParameters> 
-	{
-		public override HttpMethod DefaultHttpMethod => HttpMethod.PUT;
-		
-		///<summary>Pretty format the returned JSON response.</summary>
-		public PutFilterRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
-		
-		
-		///<summary>Return human readable values for statistics.</summary>
-		public PutFilterRequestParameters Human(bool human) => this.AddQueryString("human", human);
-		
-		
-		///<summary>Include the stack trace of returned errors.</summary>
-		public PutFilterRequestParameters ErrorTrace(bool error_trace) => this.AddQueryString("error_trace", error_trace);
-		
-		
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public PutFilterRequestParameters Source(string source) => this.AddQueryString("source", source);
-		
-		
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public PutFilterRequestParameters FilterPath(params string[] filter_path) => this.AddQueryString("filter_path", filter_path);
 		
 	}
 	

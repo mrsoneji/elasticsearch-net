@@ -3580,30 +3580,6 @@ namespace Nest
 			throw InvalidDispatch("XpackMlDeleteExpiredData", p, new [] { DELETE }, "/_xpack/ml/_delete_expired_data");
 		}
 		
-		internal ElasticsearchResponse<T> XpackMlDeleteFilterDispatch<T>(IRequest<DeleteFilterRequestParameters> p ) where T : class
-		{
-			switch(p.HttpMethod)
-			{
-				case DELETE:
-					if (AllSetNoFallback(p.RouteValues.FilterId)) return _lowLevel.XpackMlDeleteFilter<T>(p.RouteValues.FilterId,u => p.RequestParameters);
-					break;
-
-			}
-			throw InvalidDispatch("XpackMlDeleteFilter", p, new [] { DELETE }, "/_xpack/ml/filters/{filter_id}");
-		}
-		
-		internal Task<ElasticsearchResponse<T>> XpackMlDeleteFilterDispatchAsync<T>(IRequest<DeleteFilterRequestParameters> p , CancellationToken cancellationToken) where T : class
-		{
-			switch(p.HttpMethod)
-			{
-				case DELETE:
-					if (AllSetNoFallback(p.RouteValues.FilterId)) return _lowLevel.XpackMlDeleteFilterAsync<T>(p.RouteValues.FilterId,u => p.RequestParameters,cancellationToken);
-					break;
-
-			}
-			throw InvalidDispatch("XpackMlDeleteFilter", p, new [] { DELETE }, "/_xpack/ml/filters/{filter_id}");
-		}
-		
 		internal ElasticsearchResponse<T> XpackMlDeleteJobDispatch<T>(IRequest<DeleteJobRequestParameters> p ) where T : class
 		{
 			switch(p.HttpMethod)
@@ -3790,30 +3766,6 @@ namespace Nest
 
 			}
 			throw InvalidDispatch("XpackMlGetDatafeedStats", p, new [] { GET }, "/_xpack/ml/datafeeds/{datafeed_id}/_stats", "/_xpack/ml/datafeeds/_stats");
-		}
-		
-		internal ElasticsearchResponse<T> XpackMlGetFiltersDispatch<T>(IRequest<GetFiltersRequestParameters> p ) where T : class
-		{
-			switch(p.HttpMethod)
-			{
-				case GET:
-					if (AllSet(p.RouteValues.FilterId)) return _lowLevel.XpackMlGetFilters<T>(p.RouteValues.FilterId,u => p.RequestParameters);
-					return _lowLevel.XpackMlGetFilters<T>(u => p.RequestParameters);
-
-			}
-			throw InvalidDispatch("XpackMlGetFilters", p, new [] { GET }, "/_xpack/ml/filters/", "/_xpack/ml/filters/{filter_id}");
-		}
-		
-		internal Task<ElasticsearchResponse<T>> XpackMlGetFiltersDispatchAsync<T>(IRequest<GetFiltersRequestParameters> p , CancellationToken cancellationToken) where T : class
-		{
-			switch(p.HttpMethod)
-			{
-				case GET:
-					if (AllSet(p.RouteValues.FilterId)) return _lowLevel.XpackMlGetFiltersAsync<T>(p.RouteValues.FilterId,u => p.RequestParameters,cancellationToken);
-					return _lowLevel.XpackMlGetFiltersAsync<T>(u => p.RequestParameters,cancellationToken);
-
-			}
-			throw InvalidDispatch("XpackMlGetFilters", p, new [] { GET }, "/_xpack/ml/filters/", "/_xpack/ml/filters/{filter_id}");
 		}
 		
 		internal ElasticsearchResponse<T> XpackMlGetInfluencersDispatch<T>(IRequest<GetInfluencersRequestParameters> p , PostData<object> body) where T : class
@@ -4058,30 +4010,6 @@ namespace Nest
 
 			}
 			throw InvalidDispatch("XpackMlPutDatafeed", p, new [] { PUT }, "/_xpack/ml/datafeeds/{datafeed_id}");
-		}
-		
-		internal ElasticsearchResponse<T> XpackMlPutFilterDispatch<T>(IRequest<PutFilterRequestParameters> p , PostData<object> body) where T : class
-		{
-			switch(p.HttpMethod)
-			{
-				case PUT:
-					if (AllSetNoFallback(p.RouteValues.FilterId)) return _lowLevel.XpackMlPutFilter<T>(p.RouteValues.FilterId,body,u => p.RequestParameters);
-					break;
-
-			}
-			throw InvalidDispatch("XpackMlPutFilter", p, new [] { PUT }, "/_xpack/ml/filters/{filter_id}");
-		}
-		
-		internal Task<ElasticsearchResponse<T>> XpackMlPutFilterDispatchAsync<T>(IRequest<PutFilterRequestParameters> p , PostData<object> body, CancellationToken cancellationToken) where T : class
-		{
-			switch(p.HttpMethod)
-			{
-				case PUT:
-					if (AllSetNoFallback(p.RouteValues.FilterId)) return _lowLevel.XpackMlPutFilterAsync<T>(p.RouteValues.FilterId,body,u => p.RequestParameters,cancellationToken);
-					break;
-
-			}
-			throw InvalidDispatch("XpackMlPutFilter", p, new [] { PUT }, "/_xpack/ml/filters/{filter_id}");
 		}
 		
 		internal ElasticsearchResponse<T> XpackMlPutJobDispatch<T>(IRequest<PutJobRequestParameters> p , PostData<object> body) where T : class

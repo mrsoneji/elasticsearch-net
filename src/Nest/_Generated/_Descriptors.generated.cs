@@ -6764,33 +6764,6 @@ namespace Nest
 	
 	}
 	
-	///<summary>descriptor for XpackMlDeleteFilter <pre></pre></summary>
-	public partial class DeleteFilterDescriptor  : RequestDescriptorBase<DeleteFilterDescriptor,DeleteFilterRequestParameters, IDeleteFilterRequest>, IDeleteFilterRequest
-	{ 
-		Id IDeleteFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
-			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
-///<param name="filter_id"> this parameter is required</param>
-		public DeleteFilterDescriptor(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
-		
-
-		
-		///<summary>Pretty format the returned JSON response.</summary>
-		public DeleteFilterDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
-
-		///<summary>Return human readable values for statistics.</summary>
-		public DeleteFilterDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
-
-		///<summary>Include the stack trace of returned errors.</summary>
-		public DeleteFilterDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
-
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public DeleteFilterDescriptor Source(string source) => AssignParam(p=>p.Source(source));
-
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public DeleteFilterDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-	
-	}
-	
 	///<summary>descriptor for XpackMlDeleteJob <pre>http://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html</pre></summary>
 	public partial class DeleteJobDescriptor  : RequestDescriptorBase<DeleteJobDescriptor,DeleteJobRequestParameters, IDeleteJobRequest>, IDeleteJobRequest
 	{ 
@@ -7002,41 +6975,6 @@ namespace Nest
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
 		public GetDatafeedStatsDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-	
-	}
-	
-	///<summary>descriptor for XpackMlGetFilters <pre></pre></summary>
-	public partial class GetFiltersDescriptor  : RequestDescriptorBase<GetFiltersDescriptor,GetFiltersRequestParameters, IGetFiltersRequest>, IGetFiltersRequest
-	{ 
-		Id IGetFiltersRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
-			/// <summary>/_xpack/ml/filters/</summary>
-		public GetFiltersDescriptor() : base(){}
-		
-
-			///<summary>The ID of the filter to fetch</summary>
-		public GetFiltersDescriptor FilterId(Id filterId) => Assign(a=>a.RouteValues.Optional("filter_id", filterId));
-
-	
-		///<summary>skips a number of filters</summary>
-		public GetFiltersDescriptor From(int from) => AssignParam(p=>p.From(from));
-
-		///<summary>specifies a max number of filters to get</summary>
-		public GetFiltersDescriptor Size(int size) => AssignParam(p=>p.Size(size));
-
-		///<summary>Pretty format the returned JSON response.</summary>
-		public GetFiltersDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
-
-		///<summary>Return human readable values for statistics.</summary>
-		public GetFiltersDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
-
-		///<summary>Include the stack trace of returned errors.</summary>
-		public GetFiltersDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
-
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public GetFiltersDescriptor Source(string source) => AssignParam(p=>p.Source(source));
-
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public GetFiltersDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
@@ -7294,33 +7232,6 @@ namespace Nest
 
 		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
 		public PutDatafeedDescriptor<T> FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
-	
-	}
-	
-	///<summary>descriptor for XpackMlPutFilter <pre></pre></summary>
-	public partial class PutFilterDescriptor  : RequestDescriptorBase<PutFilterDescriptor,PutFilterRequestParameters, IPutFilterRequest>, IPutFilterRequest
-	{ 
-		Id IPutFilterRequest.FilterId => Self.RouteValues.Get<Id>("filter_id");
-			/// <summary>/_xpack/ml/filters/{filter_id}</summary>
-///<param name="filter_id"> this parameter is required</param>
-		public PutFilterDescriptor(Id filter_id) : base(r=>r.Required("filter_id", filter_id)){}
-		
-
-		
-		///<summary>Pretty format the returned JSON response.</summary>
-		public PutFilterDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
-
-		///<summary>Return human readable values for statistics.</summary>
-		public PutFilterDescriptor Human(bool human = true) => AssignParam(p=>p.Human(human));
-
-		///<summary>Include the stack trace of returned errors.</summary>
-		public PutFilterDescriptor ErrorTrace(bool error_trace = true) => AssignParam(p=>p.ErrorTrace(error_trace));
-
-		///<summary>The URL-encoded request definition. Useful for libraries that do not accept a request body for non-POST requests.</summary>
-		public PutFilterDescriptor Source(string source) => AssignParam(p=>p.Source(source));
-
-		///<summary>A comma-separated list of filters used to reduce the respone.</summary>
-		public PutFilterDescriptor FilterPath(params string[] filter_path) => AssignParam(p=>p.FilterPath(filter_path));
 	
 	}
 	
