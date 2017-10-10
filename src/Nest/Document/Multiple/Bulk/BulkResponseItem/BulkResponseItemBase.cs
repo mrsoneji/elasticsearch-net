@@ -22,6 +22,10 @@ namespace Nest
 		public BulkError Error { get; internal set; }
 		[JsonProperty("_shards")]
 		public ShardsMetaData Shards { get; internal set; }
+		[JsonProperty("_seq_no")]
+		public long SequenceNumber { get; internal set; }
+		[JsonProperty("_primary_term")]
+		public long PrimaryTerm { get; internal set; }
 
 		/// <summary>
 		/// Specifies wheter this particular bulk operation succeeded or not
@@ -34,7 +38,7 @@ namespace Nest
 				switch (this.Operation.ToLowerInvariant())
 				{
 					case "delete": return this.Status == 200 || this.Status == 404;
-					case "update": 
+					case "update":
 					case "index":
 					case "create":
 						return this.Status == 200 || this.Status == 201;
