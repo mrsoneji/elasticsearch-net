@@ -7,12 +7,20 @@ namespace Nest
 {
 	public enum CountFunction
 	{
-		Count ,
+		Count,
 		HighCount,
-		LowCount,
+		LowCount
+	}
+
+	public enum NonZeroCountFunction
+	{
 		NonZeroCount,
 		LowNonZeroCount,
-		HighNonZeroCount,
+		HighNonZeroCount
+	}
+
+	public enum DistinctCountFunction
+	{
 		DistinctCount,
 		LowDistinctCount,
 		HighDistinctCount
@@ -30,20 +38,38 @@ namespace Nest
 					return "high_count";
 				case CountFunction.LowCount:
 					return "low_count";
-				case CountFunction.NonZeroCount:
-					return  "non_zero_count";
-				case CountFunction.LowNonZeroCount:
-					return  "low_non_zero_count";
-				case CountFunction.HighNonZeroCount:
-					return"high_non_zero_count";
-				case CountFunction.DistinctCount:
-					return "distinct_count";
-				case CountFunction.LowDistinctCount:
-					return  "low_distinct_count";
-				case CountFunction.HighDistinctCount:
-					return  "high_distinct_count";
 				default:
 					throw new ArgumentOutOfRangeException(nameof(countFunction), countFunction, null);
+			}
+		}
+
+		public static string GetStringValue(this NonZeroCountFunction nonZeroCountFunction)
+		{
+			switch (nonZeroCountFunction)
+			{
+				case NonZeroCountFunction.NonZeroCount:
+					return "non_zero_count";
+				case NonZeroCountFunction.LowNonZeroCount:
+					return "low_non_zero_count";
+				case NonZeroCountFunction.HighNonZeroCount:
+					return "high_non_zero_count";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(nonZeroCountFunction), nonZeroCountFunction, null);
+			}
+		}
+
+		public static string GetStringValue(this DistinctCountFunction distinctCountFunction)
+		{
+			switch (distinctCountFunction)
+			{
+				case DistinctCountFunction.DistinctCount:
+					return "distinct_count";
+				case DistinctCountFunction.LowDistinctCount:
+					return "low_distinct_count";
+				case DistinctCountFunction.HighDistinctCount:
+					return "high_distinct_count";
+				default:
+					throw new ArgumentOutOfRangeException(nameof(distinctCountFunction), distinctCountFunction, null);
 			}
 		}
 	}
@@ -78,7 +104,7 @@ namespace Nest
 		public Field ByFieldName { get; set; }
 		public Field PartitionFieldName { get; set; }
 
-		protected NonZeroCountDetectorBase(CountFunction function) : base(function.GetStringValue())
+		protected NonZeroCountDetectorBase(NonZeroCountFunction function) : base(function.GetStringValue())
 		{
 		}
 	}
@@ -90,7 +116,7 @@ namespace Nest
 		public Field OverFieldName { get; set; }
 		public Field FieldName { get; set; }
 
-		protected DistinctCountDetectorBase(CountFunction function) : base(function.GetStringValue())
+		protected DistinctCountDetectorBase(DistinctCountFunction function) : base(function.GetStringValue())
 		{
 		}
 	}
@@ -121,7 +147,7 @@ namespace Nest
 		Field IByFieldNameDetector.ByFieldName { get; set; }
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 
-		public NonZeroCountDetectorDescriptor(CountFunction function) : base(function.GetStringValue()) {}
+		public NonZeroCountDetectorDescriptor(NonZeroCountFunction function) : base(function.GetStringValue()) {}
 
 		public NonZeroCountDetectorDescriptor<T> ByFieldName(Field byFieldName) => Assign(a => a.ByFieldName = byFieldName);
 
@@ -139,7 +165,7 @@ namespace Nest
 		Field IPartitionFieldNameDetector.PartitionFieldName { get; set; }
 		Field IFieldNameDetector.FieldName { get; set; }
 
-		public DistinctCountDetectorDescriptor(CountFunction function) : base(function.GetStringValue()) {}
+		public DistinctCountDetectorDescriptor(DistinctCountFunction function) : base(function.GetStringValue()) {}
 
 		public DistinctCountDetectorDescriptor<T> FieldName(Field fieldName) => Assign(a => a.FieldName = fieldName);
 
@@ -179,7 +205,7 @@ namespace Nest
 	/// </summary>
 	public class NonZeroCountDetector : NonZeroCountDetectorBase
 	{
-		public NonZeroCountDetector() : base(CountFunction.NonZeroCount) {}
+		public NonZeroCountDetector() : base(NonZeroCountFunction.NonZeroCount) {}
 	}
 
 	/// <summary>
@@ -187,22 +213,22 @@ namespace Nest
 	/// </summary>
 	public class HighNonZeroCountDetector : NonZeroCountDetectorBase
 	{
-		public HighNonZeroCountDetector() : base(CountFunction.HighNonZeroCount) {}
+		public HighNonZeroCountDetector() : base(NonZeroCountFunction.HighNonZeroCount) {}
 	}
 
 	public class DistinctCountDetector : DistinctCountDetectorBase
 	{
-		public DistinctCountDetector() : base(CountFunction.DistinctCount) {}
+		public DistinctCountDetector() : base(DistinctCountFunction.DistinctCount) {}
 	}
 
 	public class HighDistinctCountDetector : DistinctCountDetectorBase
 	{
-		public HighDistinctCountDetector() : base(CountFunction.HighDistinctCount) {}
+		public HighDistinctCountDetector() : base(DistinctCountFunction.HighDistinctCount) {}
 	}
 
 	public class LowDistinctCountDetector : DistinctCountDetectorBase
 	{
-		public LowDistinctCountDetector() : base(CountFunction.LowDistinctCount) {}
+		public LowDistinctCountDetector() : base(DistinctCountFunction.LowDistinctCount) {}
 	}
 
 	/// <summary>
@@ -210,6 +236,6 @@ namespace Nest
 	/// </summary>
 	public class LowNonZeroCountDetector : NonZeroCountDetectorBase
 	{
-		public LowNonZeroCountDetector() : base(CountFunction.LowNonZeroCount) {}
+		public LowNonZeroCountDetector() : base(NonZeroCountFunction.LowNonZeroCount) {}
 	}
 }

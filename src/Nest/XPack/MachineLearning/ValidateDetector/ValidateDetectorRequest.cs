@@ -33,22 +33,22 @@ namespace Nest
 			Assign(a => a.Detector = selector.InvokeOrDefault(new CountDetectorDescriptor<T>(CountFunction.LowCount)));
 
 		public ValidateDetectorDescriptor<T> NonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(CountFunction.NonZeroCount)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(NonZeroCountFunction.NonZeroCount)));
 
 		public ValidateDetectorDescriptor<T> HighNonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(CountFunction.HighNonZeroCount)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(NonZeroCountFunction.HighNonZeroCount)));
 
 		public ValidateDetectorDescriptor<T> LowNonZeroCount(Func<NonZeroCountDetectorDescriptor<T>, INonZeroCountDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(CountFunction.LowNonZeroCount)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new NonZeroCountDetectorDescriptor<T>(NonZeroCountFunction.LowNonZeroCount)));
 
 		public ValidateDetectorDescriptor<T> DistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(CountFunction.DistinctCount)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(DistinctCountFunction.DistinctCount)));
 
 		public ValidateDetectorDescriptor<T> HighDistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(CountFunction.HighDistinctCount)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(DistinctCountFunction.HighDistinctCount)));
 
 		public ValidateDetectorDescriptor<T> LowDistinctCount(Func<DistinctCountDetectorDescriptor<T>, IDistinctCountDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(CountFunction.LowDistinctCount)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new DistinctCountDetectorDescriptor<T>(DistinctCountFunction.LowDistinctCount)));
 
 		public ValidateDetectorDescriptor<T> InfoContent(Func<InfoContentDetectorDescriptor<T>, IInfoContentDetector> selector = null) =>
 			Assign(a => a.Detector = selector.InvokeOrDefault(new InfoContentDetectorDescriptor<T>(InfoContentFunction.InfoContent)));
@@ -111,13 +111,13 @@ namespace Nest
 			Assign(a => a.Detector = selector.InvokeOrDefault(new SumDetectorDescriptor<T>(SumFunction.LowSum)));
 
 		public ValidateDetectorDescriptor<T> NonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(SumFunction.NonNullSum)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(NonNullSumFunction.NonNullSum)));
 
 		public ValidateDetectorDescriptor<T> HighNonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(SumFunction.HighNonNullSum)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(NonNullSumFunction.HighNonNullSum)));
 
 		public ValidateDetectorDescriptor<T> LowNonNullSum(Func<NonNullSumDetectorDescriptor<T>, INonNullSumDetector> selector = null) =>
-			Assign(a => a.Detector = selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(SumFunction.LowNonNullSum)));
+			Assign(a => a.Detector = selector.InvokeOrDefault(new NonNullSumDetectorDescriptor<T>(NonNullSumFunction.LowNonNullSum)));
 
 		public ValidateDetectorDescriptor<T> TimeOfDay(Func<TimeDetectorDescriptor<T>, ITimeDetector> selector = null) =>
 			Assign(a => a.Detector = selector.InvokeOrDefault(new TimeDetectorDescriptor<T>(TimeFunction.TimeOfDay)));

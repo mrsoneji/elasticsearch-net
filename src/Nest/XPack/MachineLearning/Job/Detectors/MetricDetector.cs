@@ -6,14 +6,19 @@ namespace Nest
 	public enum MetricFunction
 	{
 		Min,
+
 		Max,
+
 		Median,
 		HighMedian,
 		LowMedian,
+
 		Mean,
 		HighMean,
 		LowMean,
+
 		Metric,
+
 		Varp,
 		HighVarp,
 		LowVarp
@@ -26,17 +31,17 @@ namespace Nest
 			switch (metricFunction)
 			{
 				case MetricFunction.Min:
-					return  "min";
+					return "min";
 				case MetricFunction.Max:
 					return "max";
 				case MetricFunction.Median:
-					return  "median";
+					return "median";
 				case MetricFunction.HighMedian:
-				return  "high_median";
+					return "high_median";
 				case MetricFunction.LowMedian:
 					return "low_median";
 				case MetricFunction.Mean:
-					return  "mean";
+					return "mean";
 				case MetricFunction.HighMean:
 					return "high_mean";
 				case MetricFunction.LowMean:
@@ -46,7 +51,7 @@ namespace Nest
 				case MetricFunction.Varp:
 					return "varp";
 				case MetricFunction.HighVarp:
-					return  "high_varp";
+					return "high_varp";
 				case MetricFunction.LowVarp:
 					return "low_varp";
 				default:

@@ -18,7 +18,7 @@ namespace Nest
 				case TimeFunction.TimeOfDay:
 					return "time_of_day";
 				case TimeFunction.TimeOfWeek:
-					return  "time_of_week";
+					return "time_of_week";
 				default:
 					throw new ArgumentOutOfRangeException(nameof(timeFunction), timeFunction, null);
 			}
