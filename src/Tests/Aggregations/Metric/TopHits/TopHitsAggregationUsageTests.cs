@@ -48,7 +48,6 @@ namespace Tests.Aggregations.Metric.TopHits
 								size = 1,
 								version = true,
 								explain = true,
-								fielddata_fields = new [] { "state", "numberOfCommits" },
 								stored_fields = new [] { "startedOn" },
 								highlight = new
 								{
@@ -94,10 +93,6 @@ namespace Tests.Aggregations.Metric.TopHits
 							.Size(1)
 							.Version()
 							.Explain()
-							.FielddataFields(fd => fd
-								.Field(p => p.State)
-								.Field(p => p.NumberOfCommits)
-							)
 							.StoredFields(f => f
 								.Field(p => p.StartedOn)
 							)
@@ -136,7 +131,6 @@ namespace Tests.Aggregations.Metric.TopHits
 						Size = 1,
 						Version = true,
 						Explain = true,
-						FielddataFields = new [] { "state", "numberOfCommits" },
 						StoredFields = new[] { "startedOn" },
 						Highlight = new Highlight
 						{
@@ -173,8 +167,6 @@ namespace Tests.Aggregations.Metric.TopHits
 				hits.Should().NotBeNullOrEmpty();
 				hits.All(h => h.Explanation != null).Should().BeTrue();
 				hits.All(h => h.Version.HasValue).Should().BeTrue();
-				hits.All(h => h.Fields.ValuesOf<StateOfBeing>("state").Any()).Should().BeTrue();
-				hits.All(h => h.Fields.ValuesOf<int>("numberOfCommits").Any()).Should().BeTrue();
 				hits.All(h => h.Fields.ValuesOf<int>("commit_factor").Any()).Should().BeTrue();
 				hits.All(h => h.Fields.ValuesOf<DateTime>("startedOn").Any()).Should().BeTrue();
 				var projects = topStateHits.Documents<Project>();

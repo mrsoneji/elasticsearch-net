@@ -30,9 +30,6 @@ namespace Nest
 		[JsonConverter(typeof(ReadAsTypeJsonConverter<ScriptFields>))]
 		IScriptFields ScriptFields { get; set; }
 
-		[JsonProperty("fielddata_fields")]
-		Fields FielddataFields { get; set; }
-
 		[JsonProperty("stored_fields")]
 		Fields StoredFields { get; set; }
 
@@ -49,7 +46,6 @@ namespace Nest
 		public IHighlight Highlight { get; set; }
 		public bool? Explain { get; set; }
 		public IScriptFields ScriptFields { get; set; }
-		public Fields FielddataFields { get; set; }
 		public Fields StoredFields { get; set; }
 		public bool? Version { get; set; }
 
@@ -79,8 +75,6 @@ namespace Nest
 
 		IScriptFields ITopHitsAggregation.ScriptFields { get; set; }
 
-		Fields ITopHitsAggregation.FielddataFields { get; set; }
-
 		Fields ITopHitsAggregation.StoredFields { get; set; }
 
 		bool? ITopHitsAggregation.Version { get; set; }
@@ -109,9 +103,6 @@ namespace Nest
 
 		public TopHitsAggregationDescriptor<T> ScriptFields(Func<ScriptFieldsDescriptor, IPromise<IScriptFields>> scriptFieldsSelector) =>
 			Assign(a => a.ScriptFields = scriptFieldsSelector?.Invoke(new ScriptFieldsDescriptor())?.Value);
-
-		public TopHitsAggregationDescriptor<T> FielddataFields(Func<FieldsDescriptor<T>, IPromise<Fields>> fields) =>
-			Assign(a => a.FielddataFields = fields?.Invoke(new FieldsDescriptor<T>())?.Value);
 
 		public TopHitsAggregationDescriptor<T> StoredFields(Func<FieldsDescriptor<T>, IPromise<Fields>> fields) =>
 			Assign(a => a.StoredFields = fields?.Invoke(new FieldsDescriptor<T>())?.Value);
