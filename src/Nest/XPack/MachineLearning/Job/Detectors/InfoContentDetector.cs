@@ -35,7 +35,7 @@ namespace Nest
 
 	public abstract class InfoContentDetectorBase : DetectorBase, IInfoContentDetector
 	{
-		protected InfoContentDetectorBase(InfoContentFunction function) : base(function.ToString()) {}
+		protected InfoContentDetectorBase(InfoContentFunction function) : base(function.GetStringValue()) {}
 
 		public Field ByFieldName { get; set; }
 		public Field OverFieldName { get; set; }
