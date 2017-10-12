@@ -12,13 +12,13 @@ namespace Nest
 		/// Before you can delete a job, you must delete the datafeeds that are associated with it, see DeleteDatafeed. Unless the force parameter is used the job must be closed before it can be deleted.
 		/// It is not currently possible to delete multiple jobs using wildcards or a comma separated list.
 		/// </summary>
-		IDeleteJobResponse DeleteJob(Id id, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null);
+		IDeleteJobResponse DeleteJob(Id jobId, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null);
 
 		/// <inheritdoc/>
 		IDeleteJobResponse DeleteJob(IDeleteJobRequest request);
 
 		/// <inheritdoc/>
-		Task<IDeleteJobResponse> DeleteJobAsync(Id id, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IDeleteJobResponse> DeleteJobAsync(Id jobId, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
 		Task<IDeleteJobResponse> DeleteJobAsync(IDeleteJobRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -27,8 +27,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IDeleteJobResponse DeleteJob(Id id, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null) =>
-			this.DeleteJob(selector.InvokeOrDefault(new DeleteJobDescriptor(id)));
+		public IDeleteJobResponse DeleteJob(Id jobId, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null) =>
+			this.DeleteJob(selector.InvokeOrDefault(new DeleteJobDescriptor(jobId)));
 
 		/// <inheritdoc/>
 		public IDeleteJobResponse DeleteJob(IDeleteJobRequest request) =>
@@ -38,8 +38,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IDeleteJobResponse> DeleteJobAsync(Id id, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.DeleteJobAsync(selector.InvokeOrDefault(new DeleteJobDescriptor(id)), cancellationToken);
+		public Task<IDeleteJobResponse> DeleteJobAsync(Id jobId, Func<DeleteJobDescriptor, IDeleteJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
+			this.DeleteJobAsync(selector.InvokeOrDefault(new DeleteJobDescriptor(jobId)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IDeleteJobResponse> DeleteJobAsync(IDeleteJobRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

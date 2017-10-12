@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Deletes an existing datafeed for a Machine Learning job.
 		/// </summary>
-		IDeleteDatafeedResponse DeleteDatafeed(Id id, Func<DeleteDatafeedDescriptor, IDeleteDatafeedRequest> selector = null);
+		IDeleteDatafeedResponse DeleteDatafeed(Id datafeedId, Func<DeleteDatafeedDescriptor, IDeleteDatafeedRequest> selector = null);
 
 		/// <inheritdoc/>
 		IDeleteDatafeedResponse DeleteDatafeed(IDeleteDatafeedRequest request);
 
 		/// <inheritdoc/>
-		Task<IDeleteDatafeedResponse> DeleteDatafeedAsync(Id id, Func<DeleteDatafeedDescriptor, IDeleteDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IDeleteDatafeedResponse> DeleteDatafeedAsync(Id datafeedId, Func<DeleteDatafeedDescriptor, IDeleteDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
 		Task<IDeleteDatafeedResponse> DeleteDatafeedAsync(IDeleteDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,8 +25,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IDeleteDatafeedResponse DeleteDatafeed(Id id, Func<DeleteDatafeedDescriptor, IDeleteDatafeedRequest> selector = null) =>
-			this.DeleteDatafeed(selector.InvokeOrDefault(new DeleteDatafeedDescriptor(id)));
+		public IDeleteDatafeedResponse DeleteDatafeed(Id datafeedId, Func<DeleteDatafeedDescriptor, IDeleteDatafeedRequest> selector = null) =>
+			this.DeleteDatafeed(selector.InvokeOrDefault(new DeleteDatafeedDescriptor(datafeedId)));
 
 		/// <inheritdoc/>
 		public IDeleteDatafeedResponse DeleteDatafeed(IDeleteDatafeedRequest request) =>
@@ -36,8 +36,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IDeleteDatafeedResponse> DeleteDatafeedAsync(Id id, Func<DeleteDatafeedDescriptor, IDeleteDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.DeleteDatafeedAsync(selector.InvokeOrDefault(new DeleteDatafeedDescriptor(id)), cancellationToken);
+		public Task<IDeleteDatafeedResponse> DeleteDatafeedAsync(Id datafeedId, Func<DeleteDatafeedDescriptor, IDeleteDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
+			this.DeleteDatafeedAsync(selector.InvokeOrDefault(new DeleteDatafeedDescriptor(datafeedId)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IDeleteDatafeedResponse> DeleteDatafeedAsync(IDeleteDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

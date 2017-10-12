@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Forces any buffered data to be processed by the Machine Learning job.
 		/// </summary>
-		IFlushJobResponse FlushJob(Id id, Func<FlushJobDescriptor, IFlushJobRequest> selector = null);
+		IFlushJobResponse FlushJob(Id jobId, Func<FlushJobDescriptor, IFlushJobRequest> selector = null);
 
 		/// <inheritdoc/>
 		IFlushJobResponse FlushJob(IFlushJobRequest request);
 
 		/// <inheritdoc/>
-		Task<IFlushJobResponse> FlushJobAsync(Id id, Func<FlushJobDescriptor, IFlushJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IFlushJobResponse> FlushJobAsync(Id jobId, Func<FlushJobDescriptor, IFlushJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
 		Task<IFlushJobResponse> FlushJobAsync(IFlushJobRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,8 +25,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IFlushJobResponse FlushJob(Id id, Func<FlushJobDescriptor, IFlushJobRequest> selector = null) =>
-			this.FlushJob(selector.InvokeOrDefault(new FlushJobDescriptor(id)));
+		public IFlushJobResponse FlushJob(Id jobId, Func<FlushJobDescriptor, IFlushJobRequest> selector = null) =>
+			this.FlushJob(selector.InvokeOrDefault(new FlushJobDescriptor(jobId)));
 
 		/// <inheritdoc/>
 		public IFlushJobResponse FlushJob(IFlushJobRequest request) =>
@@ -36,8 +36,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IFlushJobResponse> FlushJobAsync(Id id, Func<FlushJobDescriptor, IFlushJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.FlushJobAsync(selector.InvokeOrDefault(new FlushJobDescriptor(id)), cancellationToken);
+		public Task<IFlushJobResponse> FlushJobAsync(Id jobId, Func<FlushJobDescriptor, IFlushJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
+			this.FlushJobAsync(selector.InvokeOrDefault(new FlushJobDescriptor(jobId)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IFlushJobResponse> FlushJobAsync(IFlushJobRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

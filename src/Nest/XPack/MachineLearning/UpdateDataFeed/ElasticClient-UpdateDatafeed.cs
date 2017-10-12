@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Update a Machine Learning datafeed.
 		/// </summary>
-		IUpdateDatafeedResponse UpdateDatafeed<T>(Id id, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null) where T : class;
+		IUpdateDatafeedResponse UpdateDatafeed<T>(Id datafeedId, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null) where T : class;
 
 		/// <inheritdoc/>
 		IUpdateDatafeedResponse UpdateDatafeed(IUpdateDatafeedRequest request);
 
 		/// <inheritdoc/>
-		Task<IUpdateDatafeedResponse> UpdateDatafeedAsync<T>(Id id, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<IUpdateDatafeedResponse> UpdateDatafeedAsync<T>(Id datafeedId, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 
 		/// <inheritdoc/>
 		Task<IUpdateDatafeedResponse> UpdateDatafeedAsync(IUpdateDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,8 +25,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IUpdateDatafeedResponse UpdateDatafeed<T>(Id id, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null) where T : class =>
-			this.UpdateDatafeed(selector.InvokeOrDefault(new UpdateDatafeedDescriptor<T>(id)));
+		public IUpdateDatafeedResponse UpdateDatafeed<T>(Id datafeedId, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null) where T : class =>
+			this.UpdateDatafeed(selector.InvokeOrDefault(new UpdateDatafeedDescriptor<T>(datafeedId)));
 
 		/// <inheritdoc/>
 		public IUpdateDatafeedResponse UpdateDatafeed(IUpdateDatafeedRequest request) =>
@@ -36,8 +36,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IUpdateDatafeedResponse> UpdateDatafeedAsync<T>(Id id, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
-			this.UpdateDatafeedAsync(selector.InvokeOrDefault(new UpdateDatafeedDescriptor<T>(id)), cancellationToken);
+		public Task<IUpdateDatafeedResponse> UpdateDatafeedAsync<T>(Id datafeedId, Func<UpdateDatafeedDescriptor<T>, IUpdateDatafeedRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
+			this.UpdateDatafeedAsync(selector.InvokeOrDefault(new UpdateDatafeedDescriptor<T>(datafeedId)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IUpdateDatafeedResponse> UpdateDatafeedAsync(IUpdateDatafeedRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

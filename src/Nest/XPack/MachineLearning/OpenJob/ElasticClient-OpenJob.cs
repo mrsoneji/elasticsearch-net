@@ -12,13 +12,13 @@ namespace Nest
 		/// A job must be opened in order for it to be ready to receive and analyze data.
 		/// A job can be opened and closed multiple times throughout its lifecycle.
 		/// </summary>
-		IOpenJobResponse OpenJob(Id id, Func<OpenJobDescriptor, IOpenJobRequest> selector = null);
+		IOpenJobResponse OpenJob(Id jobId, Func<OpenJobDescriptor, IOpenJobRequest> selector = null);
 
 		/// <inheritdoc/>
 		IOpenJobResponse OpenJob(IOpenJobRequest request);
 
 		/// <inheritdoc/>
-		Task<IOpenJobResponse> OpenJobAsync(Id id, Func<OpenJobDescriptor, IOpenJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IOpenJobResponse> OpenJobAsync(Id jobId, Func<OpenJobDescriptor, IOpenJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
 		Task<IOpenJobResponse> OpenJobAsync(IOpenJobRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -27,8 +27,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IOpenJobResponse OpenJob(Id id, Func<OpenJobDescriptor, IOpenJobRequest> selector = null) =>
-			this.OpenJob(selector.InvokeOrDefault(new OpenJobDescriptor(id)));
+		public IOpenJobResponse OpenJob(Id jobId, Func<OpenJobDescriptor, IOpenJobRequest> selector = null) =>
+			this.OpenJob(selector.InvokeOrDefault(new OpenJobDescriptor(jobId)));
 
 		/// <inheritdoc/>
 		public IOpenJobResponse OpenJob(IOpenJobRequest request) =>
@@ -38,8 +38,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IOpenJobResponse> OpenJobAsync(Id id, Func<OpenJobDescriptor, IOpenJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.OpenJobAsync(selector.InvokeOrDefault(new OpenJobDescriptor(id)), cancellationToken);
+		public Task<IOpenJobResponse> OpenJobAsync(Id jobId, Func<OpenJobDescriptor, IOpenJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) =>
+			this.OpenJobAsync(selector.InvokeOrDefault(new OpenJobDescriptor(jobId)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IOpenJobResponse> OpenJobAsync(IOpenJobRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

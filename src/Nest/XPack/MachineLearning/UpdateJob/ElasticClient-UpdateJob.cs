@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Updates a Machine Learning job.
 		/// </summary>
-		IUpdateJobResponse UpdateJob<T>(Id id, Func<UpdateJobDescriptor<T>, IUpdateJobRequest> selector = null) where T : class;
+		IUpdateJobResponse UpdateJob<T>(Id jobId, Func<UpdateJobDescriptor<T>, IUpdateJobRequest> selector = null) where T : class;
 
 		/// <inheritdoc/>
 		IUpdateJobResponse UpdateJob(IUpdateJobRequest request);
 
 		/// <inheritdoc/>
-		Task<IUpdateJobResponse> UpdateJobAsync<T>(Id id, Func<UpdateJobDescriptor<T>, IUpdateJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
+		Task<IUpdateJobResponse> UpdateJobAsync<T>(Id jobId, Func<UpdateJobDescriptor<T>, IUpdateJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class;
 
 		/// <inheritdoc/>
 		Task<IUpdateJobResponse> UpdateJobAsync(IUpdateJobRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,8 +25,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IUpdateJobResponse UpdateJob<T>(Id id, Func<UpdateJobDescriptor<T>, IUpdateJobRequest> selector = null) where T : class =>
-			this.UpdateJob(selector.InvokeOrDefault(new UpdateJobDescriptor<T>(id)));
+		public IUpdateJobResponse UpdateJob<T>(Id jobId, Func<UpdateJobDescriptor<T>, IUpdateJobRequest> selector = null) where T : class =>
+			this.UpdateJob(selector.InvokeOrDefault(new UpdateJobDescriptor<T>(jobId)));
 
 		/// <inheritdoc/>
 		public IUpdateJobResponse UpdateJob(IUpdateJobRequest request) =>
@@ -36,8 +36,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IUpdateJobResponse> UpdateJobAsync<T>(Id id, Func<UpdateJobDescriptor<T>, IUpdateJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
-			this.UpdateJobAsync(selector.InvokeOrDefault(new UpdateJobDescriptor<T>(id)), cancellationToken);
+		public Task<IUpdateJobResponse> UpdateJobAsync<T>(Id jobId, Func<UpdateJobDescriptor<T>, IUpdateJobRequest> selector = null, CancellationToken cancellationToken = default(CancellationToken)) where T : class =>
+			this.UpdateJobAsync(selector.InvokeOrDefault(new UpdateJobDescriptor<T>(jobId)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IUpdateJobResponse> UpdateJobAsync(IUpdateJobRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>

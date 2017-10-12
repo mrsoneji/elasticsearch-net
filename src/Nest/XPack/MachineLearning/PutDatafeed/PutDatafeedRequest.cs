@@ -126,7 +126,7 @@ namespace Nest
 
 		/// <inheritdoc />
 		public PutDatafeedDescriptor<T> ChunkingConfig(Func<ChunkingConfigDescriptor, IChunkingConfig> selector) =>
-			Assign(a => a.ChunkingConfig = selector.InvokeOrDefault(new ChunkingConfigDescriptor()));
+			Assign(a => a.ChunkingConfig = selector?.Invoke(new ChunkingConfigDescriptor()));
 
 		/// <inheritdoc />
 		public PutDatafeedDescriptor<T> Frequency(Time frequency) => Assign(a => a.Frequency = frequency);

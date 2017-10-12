@@ -10,13 +10,13 @@ namespace Nest
 		/// <summary>
 		/// Sends data to a Machine Learning job for analysis.
 		/// </summary>
-		IPostJobDataResponse PostJobData(Id id, Func<PostJobDataDescriptor, IPostJobDataRequest> selector);
+		IPostJobDataResponse PostJobData(Id jobId, Func<PostJobDataDescriptor, IPostJobDataRequest> selector);
 
 		/// <inheritdoc/>
 		IPostJobDataResponse PostJobData(IPostJobDataRequest request);
 
 		/// <inheritdoc/>
-		Task<IPostJobDataResponse> PostJobDataAsync(Id id, Func<PostJobDataDescriptor, IPostJobDataRequest> selector, CancellationToken cancellationToken = default(CancellationToken));
+		Task<IPostJobDataResponse> PostJobDataAsync(Id jobId, Func<PostJobDataDescriptor, IPostJobDataRequest> selector, CancellationToken cancellationToken = default(CancellationToken));
 
 		/// <inheritdoc/>
 		Task<IPostJobDataResponse> PostJobDataAsync(IPostJobDataRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -25,8 +25,8 @@ namespace Nest
 	public partial class ElasticClient
 	{
 		/// <inheritdoc/>
-		public IPostJobDataResponse PostJobData(Id id, Func<PostJobDataDescriptor, IPostJobDataRequest> selector) =>
-			this.PostJobData(selector.InvokeOrDefault(new PostJobDataDescriptor(id)));
+		public IPostJobDataResponse PostJobData(Id jobId, Func<PostJobDataDescriptor, IPostJobDataRequest> selector) =>
+			this.PostJobData(selector.InvokeOrDefault(new PostJobDataDescriptor(jobId)));
 
 		/// <inheritdoc/>
 		public IPostJobDataResponse PostJobData(IPostJobDataRequest request) =>
@@ -36,8 +36,8 @@ namespace Nest
 			);
 
 		/// <inheritdoc/>
-		public Task<IPostJobDataResponse> PostJobDataAsync(Id id, Func<PostJobDataDescriptor, IPostJobDataRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) =>
-			this.PostJobDataAsync(selector.InvokeOrDefault(new PostJobDataDescriptor(id)), cancellationToken);
+		public Task<IPostJobDataResponse> PostJobDataAsync(Id jobId, Func<PostJobDataDescriptor, IPostJobDataRequest> selector, CancellationToken cancellationToken = default(CancellationToken)) =>
+			this.PostJobDataAsync(selector.InvokeOrDefault(new PostJobDataDescriptor(jobId)), cancellationToken);
 
 		/// <inheritdoc/>
 		public Task<IPostJobDataResponse> PostJobDataAsync(IPostJobDataRequest request, CancellationToken cancellationToken = default(CancellationToken)) =>
