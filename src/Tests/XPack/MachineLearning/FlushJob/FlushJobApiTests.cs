@@ -40,11 +40,24 @@ namespace Tests.XPack.MachineLearning.FlushJob
 		protected override int ExpectStatusCode => 200;
 		protected override HttpMethod HttpMethod => HttpMethod.POST;
 		protected override string UrlPath => $"_xpack/ml/anomaly_detectors/{CallIsolatedValue}/_flush";
-		protected override bool SupportsDeserialization => true;
+		protected override bool SupportsDeserialization => false;
 		protected override FlushJobDescriptor NewDescriptor() => new FlushJobDescriptor(CallIsolatedValue);
-		protected override object ExpectJson => null;
-		protected override Func<FlushJobDescriptor, IFlushJobRequest> Fluent => f => f;
-		protected override FlushJobRequest Initializer => new FlushJobRequest(CallIsolatedValue);
+
+		protected override object ExpectJson => new
+		{
+			advance_time = "2015-01-01T00:00:00+00:00",
+			calc_interim = true
+		};
+
+		protected override Func<FlushJobDescriptor, IFlushJobRequest> Fluent => f => f
+			.AdvanceTime(new DateTimeOffset(2015, 1 , 1, 0, 0, 0, TimeSpan.Zero))
+			.CalculateInterim();
+
+		protected override FlushJobRequest Initializer => new FlushJobRequest(CallIsolatedValue)
+		{
+			AdvanceTime = new DateTimeOffset(2015, 1 , 1, 0, 0, 0, TimeSpan.Zero),
+			CalculateInterim = true
+		};
 
 		protected override void ExpectResponse(IFlushJobResponse response)
 		{
