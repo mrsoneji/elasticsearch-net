@@ -43,12 +43,6 @@ namespace Nest
 		public double InfluencerScore { get; internal set; }
 
 		/// <summary>
-		/// Internal.
-		/// </summary>
-		[JsonProperty("raw_anomaly_score")]
-		public double RawAnomalyScore { get; internal set; }
-
-		/// <summary>
 		/// The probability that the influencer has this behavior, in the range 0 to 1. This value can be held to a high precision of over 300 decimal places.
 		/// </summary>
 		[JsonProperty("probability")]
