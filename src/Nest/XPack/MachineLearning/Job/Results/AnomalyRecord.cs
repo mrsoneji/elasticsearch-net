@@ -4,6 +4,10 @@ using Newtonsoft.Json;
 
 namespace Nest
 {
+	/// <summary>
+	/// Detailed analyticial results of anomalous activity that has been identified in
+	/// the input data based on the detector configuration.
+	/// </summary>
 	[JsonObject]
 	public class AnomalyRecord
 	{

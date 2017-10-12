@@ -1,12 +1,6 @@
-﻿using Newtonsoft.Json;
-
-namespace Nest
+﻿namespace Nest
 {
-	public interface IDeleteDatafeedResponse : IAcknowledgedResponse
-	{
-	}
+	public interface IDeleteDatafeedResponse : IAcknowledgedResponse {}
 
-	public class DeleteDatafeedResponse : AcknowledgedResponseBase, IDeleteDatafeedResponse
-	{
-	}
+	public class DeleteDatafeedResponse : AcknowledgedResponseBase, IDeleteDatafeedResponse {}
 }

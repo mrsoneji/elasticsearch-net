@@ -93,38 +93,6 @@ namespace Nest
 		public DateTimeOffset? Timestamp { get; set; }
 	}
 
-	public interface IPage
-	{
-		/// <summary>
-		/// Skips the specified number of buckets.
-		/// </summary>
-		[JsonProperty("from")]
-		int? From { get; set; }
-
-		/// <summary>
-		/// Specifies the maximum number of buckets to obtain.
-		/// </summary>
-		[JsonProperty("size")]
-		int? Size { get; set; }
-	}
-
-	public class PageDescriptor : DescriptorBase<PageDescriptor, IPage>, IPage
-	{
-		int? IPage.From { get; set; }
-		int? IPage.Size { get; set; }
-
-		public PageDescriptor From(int from) => Assign(a => a.From = from);
-
-		public PageDescriptor Size(int size) => Assign(a => a.Size = size);
-	}
-
-	public class Page : IPage
-	{
-		public int? From { get; set; }
-
-		public int? Size { get; set; }
-	}
-
 	/// <inheritdoc />
 	[DescriptorFor("XpackMlGetBuckets")]
 	public partial class GetBucketsDescriptor
@@ -143,7 +111,7 @@ namespace Nest
 		public GetBucketsDescriptor AnomalyScore(double anomalyScore) => Assign(a => a.AnomalyScore = anomalyScore);
 
 		/// <inheritdoc />
-		public GetBucketsDescriptor Desc(bool descending = true) => Assign(a => a.Descending = descending);
+		public GetBucketsDescriptor Descending(bool descending = true) => Assign(a => a.Descending = descending);
 
 		/// <inheritdoc />
 		public GetBucketsDescriptor End(DateTimeOffset end) => Assign(a => a.End = end);

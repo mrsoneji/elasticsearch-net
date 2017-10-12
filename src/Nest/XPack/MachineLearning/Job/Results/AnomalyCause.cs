@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Nest
 {
+	/// <summary>
+	/// Cause for the anomaly that has been identified for the over field.
+	/// </summary>
 	[JsonObject]
 	public class AnomalyCause
 	{

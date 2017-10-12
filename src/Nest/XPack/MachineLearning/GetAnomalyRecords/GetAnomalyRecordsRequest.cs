@@ -12,7 +12,7 @@ namespace Nest
 		/// If true, the results are sorted in descending order.
 		/// </summary>
 		[JsonProperty("desc")]
-		bool? Desc { get; set; }
+		bool? Descending { get; set; }
 
 		/// <summary>
 		/// If true, the output excludes interim results. By default, interim results are included.
@@ -57,7 +57,7 @@ namespace Nest
 	public partial class GetAnomalyRecordsRequest
 	{
 		/// <inheritdoc />
-		public bool? Desc { get; set; }
+		public bool? Descending { get; set; }
 
 		/// <inheritdoc />
 		public bool? ExcludeInterim { get; set; }
@@ -84,7 +84,7 @@ namespace Nest
 	{
 		public GetAnomalyRecordsDescriptor() : base() { }
 
-		bool? IGetAnomalyRecordsRequest.Desc { get; set; }
+		bool? IGetAnomalyRecordsRequest.Descending { get; set; }
 		DateTimeOffset? IGetAnomalyRecordsRequest.End { get; set; }
 		IPage IGetAnomalyRecordsRequest.Page { get; set; }
 		Field IGetAnomalyRecordsRequest.Sort { get; set; }
@@ -93,7 +93,7 @@ namespace Nest
 		double? IGetAnomalyRecordsRequest.RecordScore { get; set; }
 
 		/// <inheritdoc />
-		public GetAnomalyRecordsDescriptor Desc(bool desc = true) => Assign(a => a.Desc = desc);
+		public GetAnomalyRecordsDescriptor Descending(bool descending = true) => Assign(a => a.Descending = descending);
 
 		/// <inheritdoc />
 		public GetAnomalyRecordsDescriptor End(DateTimeOffset end) => Assign(a => a.End = end);

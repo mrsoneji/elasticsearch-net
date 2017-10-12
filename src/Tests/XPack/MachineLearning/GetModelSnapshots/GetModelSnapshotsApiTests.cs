@@ -46,11 +46,12 @@ namespace Tests.XPack.MachineLearning.GetModelSnapshots
 			response.ModelSnapshots.Should().HaveCount(1);
 			response.Count.Should().Be(1);
 
-			response.ModelSnapshots.First().JobId.Should().Be(CallIsolatedValue);
-			response.ModelSnapshots.First().Timestamp.Should().Be(new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero));
-			response.ModelSnapshots.First().SnapshotId.Should().Be("1");
-			response.ModelSnapshots.First().SnapshotDocCount.Should().Be(1);
-			response.ModelSnapshots.First().Retain.Should().Be(false);
+			var modelSnapshot = response.ModelSnapshots.First();
+			modelSnapshot.JobId.Should().Be(CallIsolatedValue);
+			modelSnapshot.Timestamp.Should().Be(new DateTimeOffset(2016, 6, 2, 00, 00, 00, TimeSpan.Zero));
+			modelSnapshot.SnapshotId.Should().Be("1");
+			modelSnapshot.SnapshotDocCount.Should().Be(1);
+			modelSnapshot.Retain.Should().Be(false);
 		}
 	}
 
