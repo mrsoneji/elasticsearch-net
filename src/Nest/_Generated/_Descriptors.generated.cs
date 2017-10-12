@@ -6833,18 +6833,6 @@ namespace Nest
 		
 
 		
-		///<summary>Calculates interim results for the most recent bucket or all buckets within the latency period</summary>
-		public FlushJobDescriptor CalcInterim(bool calc_interim = true) => AssignParam(p=>p.CalcInterim(calc_interim));
-
-		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
-		public FlushJobDescriptor Start(string start) => AssignParam(p=>p.Start(start));
-
-		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
-		public FlushJobDescriptor End(string end) => AssignParam(p=>p.End(end));
-
-		///<summary>Setting this tells the Engine API that no data prior to advance_time is expected</summary>
-		public FlushJobDescriptor AdvanceTime(string advance_time) => AssignParam(p=>p.AdvanceTime(advance_time));
-
 		///<summary>Pretty format the returned JSON response.</summary>
 		public FlushJobDescriptor Pretty(bool pretty = true) => AssignParam(p=>p.Pretty(pretty));
 
@@ -7158,10 +7146,10 @@ namespace Nest
 		
 
 		
-		///<summary></summary>
+		///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
 		public PostJobDataDescriptor ResetStart(DateTimeOffset reset_start) => AssignParam(p=>p.ResetStart(reset_start));
 
-		///<summary></summary>
+		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
 		public PostJobDataDescriptor ResetEnd(DateTimeOffset reset_end) => AssignParam(p=>p.ResetEnd(reset_end));
 
 		///<summary>Pretty format the returned JSON response.</summary>

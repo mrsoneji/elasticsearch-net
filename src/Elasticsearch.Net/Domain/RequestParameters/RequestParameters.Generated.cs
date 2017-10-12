@@ -7024,22 +7024,6 @@ namespace Elasticsearch.Net
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary>Calculates interim results for the most recent bucket or all buckets within the latency period</summary>
-		public FlushJobRequestParameters CalcInterim(bool calc_interim) => this.AddQueryString("calc_interim", calc_interim);
-		
-		
-		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
-		public FlushJobRequestParameters Start(string start) => this.AddQueryString("start", start);
-		
-		
-		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
-		public FlushJobRequestParameters End(string end) => this.AddQueryString("end", end);
-		
-		
-		///<summary>Setting this tells the Engine API that no data prior to advance_time is expected</summary>
-		public FlushJobRequestParameters AdvanceTime(string advance_time) => this.AddQueryString("advance_time", advance_time);
-		
-		
 		///<summary>Pretty format the returned JSON response.</summary>
 		public FlushJobRequestParameters Pretty(bool pretty) => this.AddQueryString("pretty", pretty);
 		
@@ -7370,12 +7354,12 @@ namespace Elasticsearch.Net
 	{
 		public override HttpMethod DefaultHttpMethod => HttpMethod.POST;
 		
-		///<summary></summary>
-		public PostJobDataRequestParameters ResetStart(DateTimeOffset reset_start) => this.AddQueryString("reset_start", reset_start.ToString("o"));
+		///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
+		public PostJobDataRequestParameters ResetStart(DateTimeOffset reset_start) => this.AddQueryString("reset_start", reset_start);
 		
 		
-		///<summary></summary>
-		public PostJobDataRequestParameters ResetEnd(DateTimeOffset reset_end) => this.AddQueryString("reset_end", reset_end.ToString("o"));
+		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
+		public PostJobDataRequestParameters ResetEnd(DateTimeOffset reset_end) => this.AddQueryString("reset_end", reset_end);
 		
 		
 		///<summary>Pretty format the returned JSON response.</summary>

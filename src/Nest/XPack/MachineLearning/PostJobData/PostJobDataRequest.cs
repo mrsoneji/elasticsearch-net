@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 
 namespace Nest
 {
-	// TODO! Consider IPostJobDataRequest<T>
 	[JsonConverter(typeof(PostJobDataConverter))]
 	public partial interface IPostJobDataRequest
 	{

@@ -8,24 +8,9 @@ namespace ApiGenerator.Overrides.Descriptors
 	{
 		public override CsharpMethod PatchMethod(CsharpMethod method)
 		{
-			method.Url.Params["reset_start"] = new DateTimeOffsetQueryParameters();
-			method.Url.Params["reset_end"] = new DateTimeOffsetQueryParameters();
+			method.Url.Params["reset_start"].Type = "date";
+			method.Url.Params["reset_end"].Type = "date";
 			return method;
-		}
-
-		private class DateTimeOffsetQueryParameters : ApiQueryParameters
-		{
-			public DateTimeOffsetQueryParameters()
-			{
-				this.Type = "DateTimeOffset";
-
-				this.FluentGenerator = (queryStringParamName, mm, original, setter) =>
-					$"public {queryStringParamName} {mm.ToPascalCase()}({CsharpType(mm)} {mm}) => this.AddQueryString(\"{original}\", {setter}.ToString(\"o\"));";
-
-
-				this.Generator = (fieldType, mm, original, setter) =>
-					$"public {fieldType} {mm} {{ get {{ return DateTimeOffset.Parse(Q<string>(\"{original}\")); }} set {{ Q(\"{original}\", {setter}.ToString(\"o\")); }} }}";
-			}
 		}
 	}
 }

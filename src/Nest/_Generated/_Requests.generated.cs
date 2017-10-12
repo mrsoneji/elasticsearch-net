@@ -3901,19 +3901,7 @@ namespace Nest
 		public FlushJobRequest(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
-			///<summary>Calculates interim results for the most recent bucket or all buckets within the latency period</summary>
-		public bool CalcInterim { get { return Q<bool>("calc_interim"); } set { Q("calc_interim", value); } }
-		
-		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
-		public string Start { get { return Q<string>("start"); } set { Q("start", value); } }
-		
-		///<summary>When used in conjunction with calc_interim, specifies the range of buckets on which to calculate interim results</summary>
-		public string End { get { return Q<string>("end"); } set { Q("end", value); } }
-		
-		///<summary>Setting this tells the Engine API that no data prior to advance_time is expected</summary>
-		public string AdvanceTime { get { return Q<string>("advance_time"); } set { Q("advance_time", value); } }
-		
-		///<summary>Pretty format the returned JSON response.</summary>
+			///<summary>Pretty format the returned JSON response.</summary>
 		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
 		
 		///<summary>Return human readable values for statistics.</summary>
@@ -6522,11 +6510,11 @@ namespace Nest
 		public PostJobDataRequest(Id job_id) : base(r=>r.Required("job_id", job_id)){}
 		
 
-			///<summary></summary>
-		public DateTimeOffset ResetStart { get { return DateTimeOffset.Parse(Q<string>("reset_start")); } set { Q("reset_start", value.ToString("o")); } }
+			///<summary>Optional parameter to specify the start of the bucket resetting range</summary>
+		public DateTimeOffset ResetStart { get { return Q<DateTimeOffset>("reset_start"); } set { Q("reset_start", value); } }
 		
-		///<summary></summary>
-		public DateTimeOffset ResetEnd { get { return DateTimeOffset.Parse(Q<string>("reset_end")); } set { Q("reset_end", value.ToString("o")); } }
+		///<summary>Optional parameter to specify the end of the bucket resetting range</summary>
+		public DateTimeOffset ResetEnd { get { return Q<DateTimeOffset>("reset_end"); } set { Q("reset_end", value); } }
 		
 		///<summary>Pretty format the returned JSON response.</summary>
 		public bool Pretty { get { return Q<bool>("pretty"); } set { Q("pretty", value); } }
